@@ -3,10 +3,12 @@ import setHeaders from "./config/headers";
 import { httpLogger, logger } from "./logger";
 
 import express from "express";
+import { clerkMiddleware } from '@clerk/express'
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
+app.use(clerkMiddleware())
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(setHeaders);
